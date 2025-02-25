@@ -22,7 +22,24 @@ console.log("=== "+ gameTitle+ " ===");
 console.log("プレイヤー情報：",player);
 console.log("敵キャラクター情報：",enemy);
 
-console.log(typeof player.name);  // 何が表示される？
-console.log(typeof player.health);
-console.log(typeof gameTitle);
+//プレイヤーの攻撃
+console.log(`🔥 ${player.name} の攻撃！`);
+enemy.health-=player.attack;
+console.log(`🛡️ ${enemy.name}の残りHP:${enemy.health}`);
 
+//敵の攻撃
+console.log(`💀${enemy.name}の攻撃`);
+player.health-=enemy.attack;
+console.log(`🛡️ ${player.name}の残りHP:${player.health}`);
+
+//レベルアップ処理
+player.level+=1;
+player.attack=Math.floor(player.attack*1.5); //小数点以下を切り捨て
+console.log(`🆙 ${player.name}はレベル${player.level}になった。`);
+console.log(`⚔ ${player.name}の攻撃力:${player.attack}`);
+
+if(enemy.health<=0){
+    console.log(`${enemy.name}を倒した。`);
+}else{
+    console.log(`${enemy.name}はまだ生きている`);
+}
